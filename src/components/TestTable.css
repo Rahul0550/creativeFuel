@@ -1,0 +1,38 @@
+/* Define CSS classes for styling */
+.green-row {
+    background-color: green;
+    color: white;
+  }
+  
+  .yellow-row {
+    background-color: yellow;
+    color: black;
+  }
+  
+  .orange-row {
+    background-color: orange;
+    color: black;
+  }
+  
+  .table{
+    margin: auto 15vw;
+    padding: 1vw;
+  }
+  /* TestTable.css */
+.TestTable {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}

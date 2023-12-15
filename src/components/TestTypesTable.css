@@ -1,0 +1,25 @@
+/* TestTypesTable.css */
+.TestTypesTable {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Add more styling as needed */
+  

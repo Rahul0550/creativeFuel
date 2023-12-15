@@ -1,96 +1,146 @@
+// App.js
 import React, { useState } from "react";
 import "./App.css";
-import Form from "./form-1/Form";
-import TestTable from "./form-2/TestTable";
+import TestTable from "./components/TestTable";
+import TestTypesTable from "./components/TestTypesTable";
 
 function App() {
-  const [selectedType, setSelectedType] = useState("");
-  const [showCreateForm, setShowCreateForm] = useState(false);
-  const [showTable, setShowTable] = useState(false);
-  const [currentType, setCurrentType] = useState("");
-  const [formSubmissions, setFormSubmissions] = useState([]);
-  const [editingId, setEditingId] = useState(null);
+  const [testType, setTestType] = useState("");
+  const [newTestField, setNewTestField] = useState("");
+  const [testTypesList, setTestTypesList] = useState([
+    "PHP",
+    "NodeJS",
+    "ReactJS"
+  ]);
+  const [tests, setTests] = useState([]);
 
-  const handleCreateTest = () => {
-    if (selectedType === currentType) {
-      alert("You are already on the same page!");
-    } else {
-      setShowCreateForm(true);
-      setCurrentType(selectedType);
-    }
+  const handleTestTypeChange = (e) => {
+    setTestType(e.target.value);
   };
 
-  const handleShowTable = () => {
-    setShowTable(true);
+  const handleNewTestFieldChange = (e) => {
+    setNewTestField(e.target.value);
   };
 
-  const handleFormSubmit = (newData) => {
-    if (editingId !== null) {
-      const updatedSubmissions = formSubmissions.map((data) =>
-        data.id === editingId ? newData : data
-      );
-      setFormSubmissions(updatedSubmissions);
-      setEditingId(null);
-    } else {
-      setFormSubmissions([...formSubmissions, newData]);
+  const handleCreateTest = (e) => {
+    e.preventDefault();
+
+    if (newTestField.trim() === "") {
+      alert("Please enter a value for the new test field.");
+      return;
     }
 
-    console.log("Form data submitted:", newData);
+    if (testTypesList.includes(newTestField)) {
+      alert("Test type already exists.");
+      return;
+    }
+
+    setTestTypesList((prevList) => [...prevList, newTestField]);
+    setTestType(newTestField);
+    setNewTestField("");
   };
 
-  const handleEditForm = (id) => {
-    setEditingId(id);
-    setShowCreateForm(true);
+  const handleSave = (e) => {
+    e.preventDefault();
+
+    const newTest = {
+      testName: e.target.elements.testName.value,
+      testType,
+      testerEmail: e.target.elements.testerEmail.value,
+      testerMobileNo: e.target.elements.contactNo.value,
+      alternateNo: e.target.elements.alternateNo.value,
+      creationDate: new Date().toLocaleDateString(),
+      updationDate: new Date().toLocaleDateString(),
+    };
+
+    setTests((prevTests) => [...prevTests, newTest]);
   };
 
-  const handleDeleteForm = (id) => {
-    const updatedSubmissions = formSubmissions.filter((data) => data.id !== id);
-    setFormSubmissions(updatedSubmissions);
-    setEditingId(null);
-    setShowTable(false); // Add this line to hide the table after deletion
+  const handleDelete = (index) => {
+    setTests((prevTests) => prevTests.filter((_, i) => i !== index));
+  };
+
+  const handleEdit = (index) => {
+    // You can add edit functionality if needed
+    console.log(`Edit button clicked for index ${index}`);
+  };
+
+  const handleSaveEdit = (index, updatedTest) => {
+    setTests((prevTests) => {
+      const newTests = [...prevTests];
+      newTests[index] = updatedTest;
+      return newTests;
+    });
+    console.log(`Save button clicked for index ${index}`, updatedTest);
+  };
+
+  const handleCancelEdit = () => {
+    // You can add cancel edit functionality if needed
+    console.log("Cancel button clicked");
   };
 
   return (
     <div className="App">
-      <div className="table-head">
-        <div>
-          <label>Test Name:-</label>
-          <br />
-          <input placeholder="Test Name" type="text" />
-        </div>
-
-        <div>
-          <label> Test Type:- </label>
-          <select onChange={(e) => setSelectedType(e.target.value)}>
-            <option value="">Select Test Type</option>
-            <option>PHP</option>
-            <option>NodeJS</option>
-            <option>ReactJS</option>
-          </select>
-          <button onClick={handleCreateTest}>Create Test</button>
-        </div>
-
-        {showCreateForm && selectedType && (
-          <Form
-            selectedType={selectedType}
-            setShowTable={handleShowTable}
-            onSubmit={handleFormSubmit}
-            editingId={editingId}
-            formSubmissions={formSubmissions}
-          />
-        )}
-
-        {showTable && (
+      <div>
+        <h2>This is a form</h2>
+        <form onSubmit={handleSave}>
           <div>
-            <h3>Form Submissions:</h3>
-            <TestTable
-              data={formSubmissions}
-              onEdit={handleEditForm}
-              onDelete={handleDeleteForm}
+            <label>Test Name :-</label>
+            <input type="text" name="testName" />
+          </div>
+
+          <div>
+            <label> Test Type:- </label>
+            <select value={testType} onChange={handleTestTypeChange}>
+              <option value="">Select Test Type</option>
+              {testTypesList.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
+            <input
+              placeholder="Enter New Field"
+              value={newTestField}
+              onChange={handleNewTestFieldChange}
+            />
+            <button onClick={handleCreateTest}>Create Test</button>
+          </div>
+
+          <div>
+            <label>Tester Email :-</label>
+            <input type="email" name="testerEmail" />
+          </div>
+          <div>
+            <label>Tester Mobile No. :-</label>
+            <input
+              type="text"
+              placeholder="Enter your 10-digit contact no"
+              pattern="[0-9]{10}"
+              name="contactNo"
+              required
             />
           </div>
-        )}
+
+          <div>
+            <label>Alternate Mobile No. :-</label>
+            <input type="text" name="alternateNo" />
+          </div>
+          <button type="submit">Save</button>
+        </form>
       </div>
+
+      {/* Display the TestTable */}
+      <TestTable
+        tests={tests}
+        onEdit={handleEdit}
+        onSaveEdit={handleSaveEdit}
+        onCancelEdit={handleCancelEdit}
+        onDelete={handleDelete}
+      />
+
+      {/* Display the TestTypesTable */}
+      <TestTypesTable tests={tests} />
     </div>
   );
 }

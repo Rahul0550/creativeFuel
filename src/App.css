@@ -1,8 +1,45 @@
-.table-head{
+/* .App{
   border: 2px solid black;
   background-color: beige;
-  margin: 5% 10%;
-  padding: 5%;
+  margin: 5% auto;
+  padding: auto;
   align-items: center;
   text-align: center;
+} */
+/* App.css */
+.App {
+  margin: 15% auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+label {
+  margin-bottom: 8px;
+}
+
+input,
+select,
+button {
+  margin-bottom: 16px;
+  padding: 8px;
+}
+
+/* Add more styling as needed */
+
+.TestTable,
+.TestTypesTable {
+  margin-top: 20px;
+}
+
+/* Add styling for TestTable and TestTypesTable */

@@ -1,6 +1,14 @@
-table{
-    /* align-items: center;
-    text-align: center;
-    margin: 10%;
-    padding: 10px; */
-}
+/* Add the following CSS for row color based on Test Type */
+tr.green {
+    background-color: green;
+    color: white;
+  }
+  
+  tr.yellow {
+    background-color: yellow;
+  }
+  
+  tr.orange {
+    background-color: orange;
+  }
+  

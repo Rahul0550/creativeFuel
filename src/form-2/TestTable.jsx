@@ -1,16 +1,15 @@
 import React, { useState } from "react";
+import "./TestTable.css"; // Import the CSS file
 
 const TestTable = ({ data, onEdit, onDelete }) => {
   const [editingId, setEditingId] = useState(null);
 
   const handleEdit = (id) => {
-    console.log(editingId);
     setEditingId(id);
     onEdit(id);
   };
 
   const handleDelete = (id) => {
-    console.log(editingId);
     onDelete(id);
     setEditingId(null);
   };
@@ -30,7 +29,7 @@ const TestTable = ({ data, onEdit, onDelete }) => {
       </thead>
       <tbody>
         {data.map((item) => (
-          <tr key={item.id}>
+          <tr key={item.id} className={item.testType === "PHP" ? "green" : item.testType === "NodeJS" ? "yellow" : "orange"}>
             <td>{item.testerEmail}</td>
             <td>{item.testerMobile}</td>
             <td>{item.alternativeMobile}</td>

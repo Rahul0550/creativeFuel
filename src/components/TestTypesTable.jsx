@@ -8,7 +8,7 @@ export default function TestTypesTable({ tests }) {
   return (
     <div>
       <h2>Test Types Table</h2>
-      <table>
+      <table className='test'> 
         <thead>
           <tr>
             <th>Type Id</th>

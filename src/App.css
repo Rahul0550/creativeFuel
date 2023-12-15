@@ -1,45 +1,64 @@
-/* .App{
-  border: 2px solid black;
-  background-color: beige;
-  margin: 5% auto;
-  padding: auto;
-  align-items: center;
-  text-align: center;
-} */
 /* App.css */
-.App {
-  margin: 15% auto;
 
+/* .App container styling */
+.App {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: whitesmoke;
 }
 
+/* Form styling */
 form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  
   margin-bottom: 20px;
+  width: 300px; /* Adjust width as needed */
 }
 
 label {
   margin-bottom: 8px;
+  font-weight: 500;
 }
 
 input,
 select,
 button {
   margin-bottom: 16px;
-  padding: 8px;
+  padding: 10px;
+  width: 100%; /* Make inputs full width */
+  box-sizing: border-box; /* Include padding in width */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
-/* Add more styling as needed */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
 
+button:hover {
+  background-color: #0056b3;
+}
+
+/* TestTable and TestTypesTable styling */
 .TestTable,
 .TestTypesTable {
   margin-top: 20px;
+  width: 100%; /* Make the tables full width */
+  overflow-x: auto; /* Enable horizontal scrolling if needed */
 }
 
-/* Add styling for TestTable and TestTypesTable */
+/* Additional styling for tables can be added here */
+.form-outline{
+  max-width: 300px;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: #e4e9eb;
+  border-radius: 8px;
+}

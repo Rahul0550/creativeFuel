@@ -81,12 +81,12 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      <div className="form-outline">
         <h2>This is a form</h2>
         <form onSubmit={handleSave}>
           <div>
             <label>Test Name :-</label>
-            <input type="text" name="testName" />
+            <input type="text" name="testName"  placeholder="Enter Name"/>
           </div>
 
           <div>
@@ -109,13 +109,13 @@ function App() {
 
           <div>
             <label>Tester Email :-</label>
-            <input type="email" name="testerEmail" />
+            <input type="email" name="testerEmail" placeholder="Enter Email" />
           </div>
           <div>
             <label>Tester Mobile No. :-</label>
             <input
               type="text"
-              placeholder="Enter your 10-digit contact no"
+              placeholder="Enter 10-digit Mobile no"
               pattern="[0-9]{10}"
               name="contactNo"
               required
@@ -124,7 +124,7 @@ function App() {
 
           <div>
             <label>Alternate Mobile No. :-</label>
-            <input type="text" name="alternateNo" />
+            <input type="text" name="alternateNo" placeholder="Enter Alternate Mobile No" />
           </div>
           <button type="submit">Save</button>
         </form>

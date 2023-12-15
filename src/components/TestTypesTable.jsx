@@ -1,4 +1,3 @@
-// TestTypesTable.js
 import React from 'react';
 import './TestTypesTable.css';
 

@@ -1,6 +1,5 @@
-// TestTable.js
-import React, { useState } from 'react';
-import './TestTable.css';
+import React, { useState } from "react";
+import "./TestTable.css";
 
 export default function TestTable({
   tests,
@@ -57,14 +56,25 @@ export default function TestTable({
         </thead>
         <tbody>
           {tests.map((test, index) => (
-            <tr key={index} className={test.testType === 'PHP' ? 'green-row' : test.testType === 'NodeJS' ? 'yellow-row' : 'orange-row'}>
+            <tr
+              key={index}
+              className={
+                test.testType === "PHP"
+                  ? "green-row"
+                  : test.testType === "NodeJS"
+                  ? "yellow-row"
+                  : "orange-row"
+              }
+            >
               <td>{index + 1}</td>
               <td>
                 {editMode === index ? (
                   <input
                     type="text"
                     value={updatedTest.testName}
-                    onChange={(e) => handleFieldChange('testName', e.target.value)}
+                    onChange={(e) =>
+                      handleFieldChange("testName", e.target.value)
+                    }
                   />
                 ) : (
                   test.testName
@@ -75,7 +85,9 @@ export default function TestTable({
                   <input
                     type="text"
                     value={updatedTest.testType}
-                    onChange={(e) => handleFieldChange('testType', e.target.value)}
+                    onChange={(e) =>
+                      handleFieldChange("testType", e.target.value)
+                    }
                   />
                 ) : (
                   test.testType
@@ -86,7 +98,9 @@ export default function TestTable({
                   <input
                     type="text"
                     value={updatedTest.testerEmail}
-                    onChange={(e) => handleFieldChange('testerEmail', e.target.value)}
+                    onChange={(e) =>
+                      handleFieldChange("testerEmail", e.target.value)
+                    }
                   />
                 ) : (
                   test.testerEmail
@@ -97,7 +111,9 @@ export default function TestTable({
                   <input
                     type="text"
                     value={updatedTest.testerMobileNo}
-                    onChange={(e) => handleFieldChange('testerMobileNo', e.target.value)}
+                    onChange={(e) =>
+                      handleFieldChange("testerMobileNo", e.target.value)
+                    }
                   />
                 ) : (
                   test.testerMobileNo
@@ -108,7 +124,9 @@ export default function TestTable({
                   <input
                     type="text"
                     value={updatedTest.alternateNo}
-                    onChange={(e) => handleFieldChange('alternateNo', e.target.value)}
+                    onChange={(e) =>
+                      handleFieldChange("alternateNo", e.target.value)
+                    }
                   />
                 ) : (
                   test.alternateNo

@@ -3,7 +3,6 @@ import "./App.css";
 import TestTable from "./components/TestTable";
 import TestTypesTable from "./components/TestTypesTable";
 
-
 const initialTests = [
   {
     testName: "Tester-1",
@@ -31,7 +30,7 @@ const initialTests = [
     alternateNo: "9876545678",
     creationDate: "16/12/2023",
     updationDate: "16/12/2023",
-  }
+  },
 ];
 
 const initialTestTypesList = ["PHP", "NodeJS"];
@@ -40,7 +39,7 @@ function App() {
   const [testType, setTestType] = useState("");
   const [newTestField, setNewTestField] = useState("");
   const [testTypesList, setTestTypesList] = useState(initialTestTypesList);
-const [tests, setTests] = useState(initialTests);
+  const [tests, setTests] = useState(initialTests);
 
   const handleTestTypeChange = (e) => {
     setTestType(e.target.value);
@@ -82,6 +81,13 @@ const [tests, setTests] = useState(initialTests);
     };
 
     setTests((prevTests) => [...prevTests, newTest]);
+
+    setTestType("");
+    setNewTestField("");
+    e.target.elements.testName.value = "";
+    e.target.elements.testerEmail.value = "";
+    e.target.elements.contactNo.value = "";
+    e.target.elements.alternateNo.value = "";
   };
 
   const handleDelete = (index) => {
@@ -89,7 +95,7 @@ const [tests, setTests] = useState(initialTests);
   };
 
   const handleEdit = (index) => {
-    // You can add edit functionality if needed
+
     console.log(`Edit button clicked for index ${index}`);
   };
 
@@ -103,7 +109,7 @@ const [tests, setTests] = useState(initialTests);
   };
 
   const handleCancelEdit = () => {
-    // You can add cancel edit functionality if needed
+
     console.log("Cancel button clicked");
   };
 
@@ -114,7 +120,7 @@ const [tests, setTests] = useState(initialTests);
         <form onSubmit={handleSave}>
           <div>
             <label>Test Name :-</label>
-            <input type="text" name="testName"  placeholder="Enter Name"/>
+            <input type="text" name="testName" placeholder="Enter Name" />
           </div>
 
           <div>

@@ -33,13 +33,14 @@ const initialTests = [
   },
 ];
 
-const initialTestTypesList = ["PHP", "NodeJS"];
+const initialTestTypesList = ["PHP", "NodeJS","ReactJS"];
 
 function App() {
   const [testType, setTestType] = useState("");
   const [newTestField, setNewTestField] = useState("");
   const [testTypesList, setTestTypesList] = useState(initialTestTypesList);
   const [tests, setTests] = useState(initialTests);
+  const [showCreateTestInput, setShowCreateTestInput] = useState(false);
 
   const handleTestTypeChange = (e) => {
     setTestType(e.target.value);
@@ -51,6 +52,8 @@ function App() {
 
   const handleCreateTest = (e) => {
     e.preventDefault();
+
+    setShowCreateTestInput(!showCreateTestInput);
 
     if (newTestField.trim() === "") {
       alert("Please enter a value for the new test field.");
@@ -95,7 +98,6 @@ function App() {
   };
 
   const handleEdit = (index) => {
-
     console.log(`Edit button clicked for index ${index}`);
   };
 
@@ -109,7 +111,6 @@ function App() {
   };
 
   const handleCancelEdit = () => {
-
     console.log("Cancel button clicked");
   };
 
@@ -133,12 +134,14 @@ function App() {
                 </option>
               ))}
             </select>
-            <input
-              placeholder="Enter New Field"
-              value={newTestField}
-              onChange={handleNewTestFieldChange}
-            />
-            <button onClick={handleCreateTest}><b>Create Test</b></button>
+            <div style={{ display: showCreateTestInput ? 'block' : 'none' }}>
+              <input
+                placeholder="Enter New Field"
+                value={newTestField}
+                onChange={handleNewTestFieldChange}
+              />
+            </div>
+            <button onClick={handleCreateTest} style={{ fontSize: '12px' }}><b>Create Test</b></button>
           </div>
 
           <div>

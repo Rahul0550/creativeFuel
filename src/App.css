@@ -53,10 +53,16 @@ button:hover {
   overflow-x: auto; /* Enable horizontal scrolling if needed */
 }
 
-.form-outline{
-  max-width: 30vw;
+.form-outline {
+  max-width: 80vw; /* Adjust the maximum width as needed */
   margin: 10px auto;
-  padding: 10px 15vw;
+  padding: 10px 5vw;
   background: #e4e9eb;
   border-radius: 8px;
+}
+@media screen and (max-width: 768px) {
+  .form-outline {
+    max-width: 95vw;
+    padding: 10px 2.5vw;
+  }
 }

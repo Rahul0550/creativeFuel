@@ -13,16 +13,18 @@
     color: black;
   }
   
-  .table{
-    margin: auto 15vw;
-    padding: 1vw;
+  .table {
+    margin: auto;
+    width: 95%; /* Adjust the width as needed */
+    padding: 10px;
   }
 
   .TestTable {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: auto;
+  }
 
 .TestTable {
   display: flex;

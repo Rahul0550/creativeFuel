@@ -39,7 +39,7 @@ export default function TestTable({
 
   return (
     <div>
-      <h2>Test Table</h2>
+      {/* <h2>Test Table</h2> */}
       <table>
         <thead>
           <tr>

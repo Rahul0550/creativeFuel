@@ -3,15 +3,44 @@ import "./App.css";
 import TestTable from "./components/TestTable";
 import TestTypesTable from "./components/TestTypesTable";
 
+
+const initialTests = [
+  {
+    testName: "Tester-1",
+    testType: "PHP",
+    testerEmail: "rahul@hotmail.com",
+    testerMobileNo: "1234567890",
+    alternateNo: "9876543210",
+    creationDate: "15/12/2023",
+    updationDate: "15/12/2023",
+  },
+  {
+    testName: "Tester-2",
+    testType: "NodeJS",
+    testerEmail: "rahul@gmail.com",
+    testerMobileNo: "1234567895",
+    alternateNo: "9876543333",
+    creationDate: "15/12/2023",
+    updationDate: "16/12/2023",
+  },
+  {
+    testName: "Tester-3",
+    testType: "ReactJS",
+    testerEmail: "rahul@yahoo.com",
+    testerMobileNo: "4564567895",
+    alternateNo: "9876545678",
+    creationDate: "16/12/2023",
+    updationDate: "16/12/2023",
+  }
+];
+
+const initialTestTypesList = ["PHP", "NodeJS"];
+
 function App() {
   const [testType, setTestType] = useState("");
   const [newTestField, setNewTestField] = useState("");
-  const [testTypesList, setTestTypesList] = useState([
-    "PHP",
-    "NodeJS",
-    "ReactJS"
-  ]);
-  const [tests, setTests] = useState([]);
+  const [testTypesList, setTestTypesList] = useState(initialTestTypesList);
+const [tests, setTests] = useState(initialTests);
 
   const handleTestTypeChange = (e) => {
     setTestType(e.target.value);

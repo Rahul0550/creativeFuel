@@ -1,7 +1,10 @@
+// App.jsx
+
 import React, { useState } from "react";
 import "./App.css";
 import TestTable from "./components/TestTable";
 import TestTypesTable from "./components/TestTypesTable";
+import "./components/Sidebar.css";
 
 const initialTests = [
   {
@@ -33,7 +36,7 @@ const initialTests = [
   },
 ];
 
-const initialTestTypesList = ["PHP", "NodeJS","ReactJS"];
+const initialTestTypesList = ["PHP", "NodeJS", "ReactJS"];
 
 function App() {
   const [testType, setTestType] = useState("");
@@ -41,6 +44,7 @@ function App() {
   const [testTypesList, setTestTypesList] = useState(initialTestTypesList);
   const [tests, setTests] = useState(initialTests);
   const [showCreateTestInput, setShowCreateTestInput] = useState(false);
+  const [selectedTab, setSelectedTab] = useState("form");
 
   const handleTestTypeChange = (e) => {
     setTestType(e.target.value);
@@ -114,70 +118,94 @@ function App() {
     console.log("Cancel button clicked");
   };
 
+  const handleTabChange = (tab) => {
+    setSelectedTab(tab);
+  };
+
   return (
     <div className="App">
-      <div className="form-outline">
-        <h2>Form</h2>
-        <form onSubmit={handleSave}>
-          <div>
-            <label><b>Test Name :-</b></label>
-            <input type="text" name="testName" placeholder="Enter Name" />
-          </div>
-
-          <div>
-            <label> <b>Test Type:- </b></label>
-            <select value={testType} onChange={handleTestTypeChange}>
-              <option value="">Select Test Type</option>
-              {testTypesList.map((type) => (
-                <option key={type} value={type}>
-                  {type}
-                </option>
-              ))}
-            </select>
-            <div style={{ display: showCreateTestInput ? 'block' : 'none' }}>
-              <input
-                placeholder="Enter New Field"
-                value={newTestField}
-                onChange={handleNewTestFieldChange}
-              />
-            </div>
-            <button onClick={handleCreateTest} style={{ fontSize: '12px' }}><b>Create Test</b></button>
-          </div>
-
-          <div>
-            <label><b>Tester Email :- </b></label>
-            <input type="email" name="testerEmail" placeholder="Enter Email" />
-          </div>
-          <div>
-            <label><b>Tester Mobile No. :- </b></label>
-            <input
-              type="text"
-              placeholder="Enter 10-digit Mobile no"
-              pattern="[0-9]{10}"
-              name="contactNo"
-              required
-            />
-          </div>
-
-          <div>
-            <label><b>Alternate Mobile No. :- </b></label>
-            <input type="text" name="alternateNo" placeholder="Enter Alternate Mobile No" />
-          </div>
-          <button type="submit"><b>Save</b></button>
-        </form>
+      <div className="sidebar">
+        <button
+          onClick={() => handleTabChange("form")}
+          className={selectedTab === "form" ? "active" : ""}
+        >
+          Form
+        </button>
+        <button
+          onClick={() => handleTabChange("table")}
+          className={selectedTab === "table" ? "active" : ""}
+        >
+          Table
+        </button>
       </div>
+      <div className="content">
+        {selectedTab === "form" && (
+          <>
+            <h2>Form</h2>
+            <form onSubmit={handleSave}>
+              <div>
+                <label><b>Test Name :-</b></label>
+                <input type="text" name="testName" placeholder="Enter Name" />
+              </div>
+              <div>
+                <label> <b>Test Type:- </b></label>
+                <select value={testType} onChange={handleTestTypeChange}>
+                  <option value="">Select Test Type</option>
+                  {testTypesList.map((type) => (
+                    <option key={type} value={type}>
+                      {type}
+                    </option>
+                  ))}
+                </select>
+                <div style={{ display: showCreateTestInput ? 'block' : 'none' }}>
+                  <input
+                    placeholder="Enter New Field"
+                    value={newTestField}
+                    onChange={handleNewTestFieldChange}
+                  />
+                </div>
+                <button onClick={handleCreateTest} style={{ fontSize: '12px' }}><b>Create Test</b></button>
+              </div>
+              <div>
+                <label><b>Tester Email :- </b></label>
+                <input type="email" name="testerEmail" placeholder="Enter Email" />
+              </div>
+              <div>
+                <label><b>Tester Mobile No. :- </b></label>
+                <input
+                  type="text"
+                  placeholder="Enter 10-digit Mobile no"
+                  pattern="[0-9]{10}"
+                  name="contactNo"
+                  required
+                />
+              </div>
+              <div>
+                <label><b>Alternate Mobile No. :- </b></label>
+                <input type="text" name="alternateNo" placeholder="Enter Alternate Mobile No" />
+              </div>
+              <button type="submit"><b>Save</b></button>
+            </form>
+          </>
+        )}
 
-      {/* Display the TestTable */}
-      <TestTable
-        tests={tests}
-        onEdit={handleEdit}
-        onSaveEdit={handleSaveEdit}
-        onCancelEdit={handleCancelEdit}
-        onDelete={handleDelete}
-      />
+        {selectedTab === "table" && (
+          <>
+            <h2>Test Table</h2>
+            {/* Display the TestTable */}
+            <TestTable
+              tests={tests}
+              onEdit={handleEdit}
+              onSaveEdit={handleSaveEdit}
+              onCancelEdit={handleCancelEdit}
+              onDelete={handleDelete}
+            />
 
-      {/* Display the TestTypesTable */}
-      <TestTypesTable tests={tests} />
+            {/* Display the TestTypesTable */}
+            <TestTypesTable tests={tests} />
+          </>
+        )}
+      </div>
     </div>
   );
 }

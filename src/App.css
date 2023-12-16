@@ -60,6 +60,50 @@ button:hover {
   background: #e4e9eb;
   border-radius: 8px;
 }
+
+.sidebar {
+  height: 100%;
+  width: 20%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  margin-left: 20%; /* Adjust margin to fit the sidebar width */
+  padding: 20px;
+  text-align: center;
+}
+
+.sidebar button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 60px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.sidebar button.active {
+  background-color: #4caf50;
+}
+
+.form-outline {
+  margin-left: 80px; /* Adjust margin to fit the sidebar width */
+  padding: 20px;
+}
+
+
 @media screen and (max-width: 768px) {
   .form-outline {
     max-width: 95vw;

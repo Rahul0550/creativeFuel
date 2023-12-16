@@ -81,7 +81,7 @@ function App() {
   return (
     <div className="App">
       <div className="form-outline">
-        <h2>This is a form</h2>
+        <h2>Form</h2>
         <form onSubmit={handleSave}>
           <div>
             <label>Test Name :-</label>

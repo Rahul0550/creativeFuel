@@ -54,9 +54,9 @@ button:hover {
 }
 
 .form-outline{
-  max-width: 300px;
+  max-width: 30vw;
   margin: 10px auto;
-  padding: 10px 20px;
+  padding: 10px 15vw;
   background: #e4e9eb;
   border-radius: 8px;
 }

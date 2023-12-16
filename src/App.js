@@ -119,12 +119,12 @@ function App() {
         <h2>Form</h2>
         <form onSubmit={handleSave}>
           <div>
-            <label>Test Name :-</label>
+            <label><b>Test Name :-</b></label>
             <input type="text" name="testName" placeholder="Enter Name" />
           </div>
 
           <div>
-            <label> Test Type:- </label>
+            <label> <b>Test Type:- </b></label>
             <select value={testType} onChange={handleTestTypeChange}>
               <option value="">Select Test Type</option>
               {testTypesList.map((type) => (
@@ -138,15 +138,15 @@ function App() {
               value={newTestField}
               onChange={handleNewTestFieldChange}
             />
-            <button onClick={handleCreateTest}>Create Test</button>
+            <button onClick={handleCreateTest}><b>Create Test</b></button>
           </div>
 
           <div>
-            <label>Tester Email :-</label>
+            <label><b>Tester Email :- </b></label>
             <input type="email" name="testerEmail" placeholder="Enter Email" />
           </div>
           <div>
-            <label>Tester Mobile No. :-</label>
+            <label><b>Tester Mobile No. :- </b></label>
             <input
               type="text"
               placeholder="Enter 10-digit Mobile no"
@@ -157,10 +157,10 @@ function App() {
           </div>
 
           <div>
-            <label>Alternate Mobile No. :-</label>
+            <label><b>Alternate Mobile No. :- </b></label>
             <input type="text" name="alternateNo" placeholder="Enter Alternate Mobile No" />
           </div>
-          <button type="submit">Save</button>
+          <button type="submit"><b>Save</b></button>
         </form>
       </div>
 

@@ -28,7 +28,7 @@ button {
   margin-bottom: 16px;
   padding: 10px;
   width: 100%; /* Make inputs full width */
-  box-sizing: border-box; /* Include padding in width */
+  box-sizing: border-box; 
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
@@ -54,7 +54,7 @@ button:hover {
 }
 
 .form-outline {
-  max-width: 80vw; /* Adjust the maximum width as needed */
+  max-width: 80vw; 
   margin: 10px auto;
   padding: 10px 5vw;
   background: #e4e9eb;
@@ -76,7 +76,7 @@ button:hover {
 }
 
 .content {
-  margin-left: 20%; /* Adjust margin to fit the sidebar width */
+  margin-left: 20%; 
   padding: 20px;
   text-align: center;
 }
